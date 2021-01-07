@@ -1,0 +1,25 @@
+@import "variables";
+
+/*shopping bag edits----------------------------*/
+/*CUSTOM MEDIA QUERY*/
+@media only screen and (min-width: 992px){
+  .shopping-bag {
+      position: absolute;
+      top: 50px;
+      right:30px;
+  }
+}
+
+/*fix shopping bag color*/
+.btn {
+  padding: 0;
+  margin: 0;
+}
+
+.shopping-bag {
+  color:white;
+}
+
+.shopping-bag:hover {
+  color: $almost-black;
+}

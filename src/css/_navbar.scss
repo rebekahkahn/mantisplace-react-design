@@ -1,0 +1,24 @@
+@import "variables";
+
+.navbar-buttons {
+    text-align: left;
+}
+
+.navbar-buttons:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.subtitle-buttons {
+    background: white;
+    border-bottom: 1px solid #d3d3d3;
+    border-left: 2px solid #d3d3d3;
+    border-right: 2px solid #d3d3d3;
+}
+
+
+//will need to figure out how to add scss mixins for react projects--------
+//TEST
+// .btn-light {
+//     @include button-variant($almost-black, darken($almost-black, 7.5%), darken($almost-black, 10%), lighten($almost-black,5%), lighten($almost-black, 10%), darken($almost-black,30%));
+// }

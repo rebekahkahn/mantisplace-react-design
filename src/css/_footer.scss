@@ -1,0 +1,22 @@
+@import "variables";
+
+/*FOOTER STYLES------------------------------------------------------------------------------------------------------------ */
+.site-footer{ 
+  font-family: "Raleway", sans-serif;
+  background-color: $bright-green;
+  min-height: 150px;
+  color: white;
+}
+
+.fa-twitter, .fa-facebook, .fa-instagram, .fa-youtube{
+  background: $bright-green;
+}
+
+.btn-social-icon {
+  border: none;
+  box-shadow:none !important;
+}
+
+.fa-twitter:hover, .fa-facebook:hover, .fa-instagram:hover, .fa-youtube:hover{
+  color: $almost-black;
+}
