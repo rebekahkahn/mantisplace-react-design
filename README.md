@@ -4,22 +4,22 @@ This project was created using [Create React App](https://github.com/facebook/cr
 
 ## Done (Jan 26, 2020)
 
-- Reworking mantisinfo components to be more concise
+- Mantises component dropdown is tied to state
+- Used hooks to change dropdown arrow
 
 ## To Fix
 
-- Re-design of the page for each individual mantis
-- Write code for siebar nav links (making most default to home for now) [easy to do]
+- Code for siebar nav links (making most default to home for now) [easy to do]
 
 ## To Do (shorter term)
 
-- Write logic for connecting dropdown selection to results on mantisinfo page
-- Toggle dropdown arrow when clicking a sidebar link
+- Rewrite dropdown logic using hooks
+- How to have two event handlers for onClick event (toggle dropdown arrow + toggle open/close)
 
 ## Longer Term
 
-- Write logic for shopping cart
 - Make code more concise, using hooks etc.
+- Write logic for shopping cart
 - Add React Redux
 - Why is there a white space to the right?
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import {
   Card,
   CardText,
@@ -13,7 +13,6 @@ import {
   ModalFooter,
   Button,
 } from "reactstrap";
-import Dropdown from "../components/Dropdown";
 import { Link } from "react-router-dom";
 
 function RenderCard({ mantis }) {
@@ -76,6 +75,163 @@ function RenderCard({ mantis }) {
     </React.Fragment>
   );
 }
+class Mantises extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: "Featured",
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  render() {
+    const nymphs = this.props.mantises.filter(
+      (mantis) => mantis.age === "Nymph"
+    );
+    const adults = this.props.mantises.filter(
+      (mantis) => mantis.age === "Adult"
+    );
+    const featured = this.props.mantises.filter(
+      (mantis) => mantis.featured === true
+    );
+
+    let mantis = featured.map((mantis) => {
+      return (
+        <div key={mantis.id}>
+          <RenderCard mantis={mantis} />
+        </div>
+      );
+    });
+
+    if (this.state.value === "Nymphs") {
+      let mantis = nymphs.map((mantis) => {
+        return (
+          <div key={mantis.id}>
+            <RenderCard mantis={mantis} />
+          </div>
+        );
+      });
+      return (
+        <React.Fragment>
+          <Row className="mr-0 ml-0 the-top">
+            <Col className="mt-2 ml-0 pl-0 title-container">
+              <h1>Mantises</h1>
+            </Col>
+            <Col>
+              <form class="container-fluid mt-2" onSubmit={this.handleSubmit}>
+                <div class="form-group row pr-1">
+                  <select
+                    class="form-control"
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                  >
+                    <option value="Featured">Sort by Featured</option>
+                    <option value="Nymphs">Sort by Nymphs</option>
+                    <option value="Adults">Sort by Adults</option>
+                  </select>
+                </div>
+              </form>
+            </Col>
+          </Row>
+
+          <Col>
+            <Row
+              xs={2}
+              sm={3}
+              md={4}
+              className="d-flex flex-fill h-100 the-row"
+            >
+              {mantis}
+            </Row>
+          </Col>
+        </React.Fragment>
+      );
+    }
+
+    if (this.state.value === "Adults") {
+      let mantis = adults.map((mantis) => {
+        return (
+          <div key={mantis.id}>
+            <RenderCard mantis={mantis} />
+          </div>
+        );
+      });
+      return (
+        <React.Fragment>
+          <Row className="mr-0 ml-0 the-top">
+            <Col className="mt-2 ml-0 pl-0 title-container">
+              <h1>Mantises</h1>
+            </Col>
+            <Col>
+              <form class="container-fluid mt-2" onSubmit={this.handleSubmit}>
+                <div class="form-group row pr-1">
+                  <select
+                    class="form-control"
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                  >
+                    <option value="Featured">Sort by Featured</option>
+                    <option value="Nymphs">Sort by Nymphs</option>
+                    <option value="Adults">Sort by Adults</option>
+                  </select>
+                </div>
+              </form>
+            </Col>
+          </Row>
+
+          <Col>
+            <Row
+              xs={2}
+              sm={3}
+              md={4}
+              className="d-flex flex-fill h-100 the-row"
+            >
+              {mantis}
+            </Row>
+          </Col>
+        </React.Fragment>
+      );
+    }
+
+    return (
+      <React.Fragment>
+        <Row className="mr-0 ml-0 the-top">
+          <Col className="mt-2 ml-0 pl-0 title-container">
+            <h1>Mantises</h1>
+          </Col>
+          <Col>
+            <form class="container-fluid mt-2" onSubmit={this.handleSubmit}>
+              <div class="form-group row pr-1">
+                <select
+                  class="form-control"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                >
+                  <option value="Featured">Sort by Featured</option>
+                  <option value="Nymphs">Sort by Nymphs</option>
+                  <option value="Adults">Sort by Adults</option>
+                </select>
+              </div>
+            </form>
+          </Col>
+        </Row>
+
+        <Col>
+          <Row xs={2} sm={3} md={4} className="d-flex flex-fill h-100 the-row">
+            {mantis}
+          </Row>
+        </Col>
+      </React.Fragment>
+    );
+  }
+}
+
+export default Mantises;
 
 //dropdown with controlled form--------------------------------------
 //logically:
@@ -88,53 +244,3 @@ function RenderCard({ mantis }) {
 //[DONE] create handleChange event handler to change state
 //[DONE] bind the state of dropdown to the correct filtered mantises
 //[TO DO] rewrite code so it is more efficient...
-
-function Mantises(props) {
-  const dropdownOptions = [
-    {
-      label: "Featured",
-      value: "featured",
-    },
-    {
-      label: "Nymphs",
-      value: "nymphs",
-    },
-    {
-      label: "Adults",
-      value: "adults",
-    },
-  ];
-
-  const nymphs = props.mantises.filter((mantis) => mantis.age === "Nymph");
-  const adults = props.mantises.filter((mantis) => mantis.age === "Adult");
-  const featured = props.mantises.filter((mantis) => mantis.featured === true);
-
-  const mantis = featured.map((mantis) => {
-    return (
-      <div key={mantis.id}>
-        <RenderCard mantis={mantis} />
-      </div>
-    );
-  });
-
-  return (
-    <React.Fragment>
-      <Row className="mr-0 ml-0 the-top">
-        <Col className="mt-2 ml-0 pl-0 title-container">
-          <h1>Mantises</h1>
-        </Col>
-        <Col>
-          <Dropdown dropdownOptions={dropdownOptions} />
-        </Col>
-      </Row>
-
-      <Col>
-        <Row xs={2} sm={3} md={4} className="d-flex flex-fill h-100 the-row">
-          {mantis}
-        </Row>
-      </Col>
-    </React.Fragment>
-  );
-}
-
-export default Mantises;
