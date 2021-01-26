@@ -76,7 +76,7 @@ function RenderCard({ mantis }) {
   );
 }
 
-//react hooks with dropdown----------------------------
+//dropdown with controlled form--------------------------------------
 //logically:
 //default state of dropdown: featured
 //when click "nymphs" the data should show mantis nymphs (new state)
@@ -86,6 +86,7 @@ function RenderCard({ mantis }) {
 //[DONE] convert Mantises to a class component
 //[DONE] create handleChange event handler to change state
 //[TO DO] bind the state of dropdown to the correct filtered mantises
+// not quite working...
 
 class Mantises extends Component {
   constructor(props) {
@@ -112,13 +113,24 @@ class Mantises extends Component {
       (mantis) => mantis.featured === true
     );
 
-    const mantis = featured.map((mantis) => {
+    let mantis = featured.map((mantis) => {
       return (
         <div key={mantis.id}>
           <RenderCard mantis={mantis} />
         </div>
       );
     });
+
+    if (this.state.value === "Nymphs") {
+      let mantis = nymphs.map((mantis) => {
+        return (
+          <div key={mantis.id}>
+            <RenderCard mantis={mantis} />
+          </div>
+        );
+      });
+      return mantis;
+    }
 
     return (
       <React.Fragment>
@@ -155,47 +167,3 @@ class Mantises extends Component {
 }
 
 export default Mantises;
-
-//written as a functional component----------------------------
-// function Mantises(props) {
-//   const nymphs = props.mantises.filter((mantis) => mantis.age === "Nymph");
-//   const adults = props.mantises.filter((mantis) => mantis.age === "Adult");
-//   const featured = props.mantises.filter((mantis) => mantis.featured === true);
-
-//   const mantis = featured.map((mantis) => {
-//     return (
-//       <div key={mantis.id}>
-//         <RenderCard mantis={mantis} />
-//       </div>
-//     );
-//   });
-
-//   return (
-//     <React.Fragment>
-//       <Row className="mr-0 ml-0 the-top">
-//         <Col className="mt-2 ml-0 pl-0 title-container">
-//           <h1>Mantises</h1>
-//         </Col>
-//         <Col>
-//           {" "}
-//           {/*This will eventually be a react redux dropdown */}
-//           <form class="container-fluid mt-2">
-//             <div class="form-group row pr-1">
-//               <select class="form-control">
-//                 <option value="select">Sort by Featured</option>
-//                 <option value="1">Sort by Nymphs</option>
-//                 <option value="2">Sort by Adults</option>
-//               </select>
-//             </div>
-//           </form>
-//         </Col>
-//       </Row>
-
-//       <Col>
-//         <Row xs={2} sm={3} md={4} className="d-flex flex-fill h-100 the-row">
-//           {mantis}
-//         </Row>
-//       </Col>
-//     </React.Fragment>
-//   );
-// }

@@ -5,6 +5,8 @@ This project was created using [Create React App](https://github.com/facebook/cr
 ## Done (Jan 25, 2020)
 
 - Filtered mantises by age and featured
+- Bound dropdown state to class state
+- Working on getting results to show up accordingly...
 
 ## To Fix
 
