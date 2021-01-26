@@ -2,11 +2,9 @@
 
 This project was created using [Create React App](https://github.com/facebook/create-react-app). Project is now being reworked for react and reactstrap.
 
-## Done (Jan 25, 2020)
+## Done (Jan 26, 2020)
 
-- Filtered mantises by age and featured
-- Bound dropdown state to class state
-- Working on getting results to show up accordingly...
+- Reworking mantisinfo components to be more concise
 
 ## To Fix
 

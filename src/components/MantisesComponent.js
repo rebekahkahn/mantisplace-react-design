@@ -85,9 +85,8 @@ function RenderCard({ mantis }) {
 //[DONE] filter the data by "nymph"
 //[DONE] convert Mantises to a class component
 //[DONE] create handleChange event handler to change state
-//[TO DO] bind the state of dropdown to the correct filtered mantises
-// not quite working...
-
+//[DONE] bind the state of dropdown to the correct filtered mantises
+//[TO DO] rewrite code so it is more efficient...
 class Mantises extends Component {
   constructor(props) {
     super(props);
@@ -129,7 +128,86 @@ class Mantises extends Component {
           </div>
         );
       });
-      return mantis;
+      return (
+        <React.Fragment>
+          <Row className="mr-0 ml-0 the-top">
+            <Col className="mt-2 ml-0 pl-0 title-container">
+              <h1>Mantises</h1>
+            </Col>
+            <Col>
+              <form class="container-fluid mt-2" onSubmit={this.handleSubmit}>
+                <div class="form-group row pr-1">
+                  <select
+                    class="form-control"
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                  >
+                    <option value="Featured">Sort by Featured</option>
+                    <option value="Nymphs">Sort by Nymphs</option>
+                    <option value="Adults">Sort by Adults</option>
+                  </select>
+                </div>
+              </form>
+            </Col>
+          </Row>
+
+          <Col>
+            <Row
+              xs={2}
+              sm={3}
+              md={4}
+              className="d-flex flex-fill h-100 the-row"
+            >
+              {mantis}
+            </Row>
+          </Col>
+        </React.Fragment>
+      );
+    }
+
+    if (this.state.value === "Adults") {
+      let mantis = adults.map((mantis) => {
+        return (
+          <div key={mantis.id}>
+            <RenderCard mantis={mantis} />
+          </div>
+        );
+      });
+      return (
+        <React.Fragment>
+          <Row className="mr-0 ml-0 the-top">
+            <Col className="mt-2 ml-0 pl-0 title-container">
+              <h1>Mantises</h1>
+            </Col>
+            <Col>
+              <form class="container-fluid mt-2" onSubmit={this.handleSubmit}>
+                <div class="form-group row pr-1">
+                  <select
+                    class="form-control"
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                  >
+                    <option value="Featured">Sort by Featured</option>
+                    <option value="Nymphs">Sort by Nymphs</option>
+                    <option value="Adults">Sort by Adults</option>
+                  </select>
+                </div>
+              </form>
+            </Col>
+          </Row>
+
+          <Col>
+            <Row
+              xs={2}
+              sm={3}
+              md={4}
+              className="d-flex flex-fill h-100 the-row"
+            >
+              {mantis}
+            </Row>
+          </Col>
+        </React.Fragment>
+      );
     }
 
     return (
@@ -139,7 +217,6 @@ class Mantises extends Component {
             <h1>Mantises</h1>
           </Col>
           <Col>
-            {/*This will eventually be a react redux dropdown */}
             <form class="container-fluid mt-2" onSubmit={this.handleSubmit}>
               <div class="form-group row pr-1">
                 <select
