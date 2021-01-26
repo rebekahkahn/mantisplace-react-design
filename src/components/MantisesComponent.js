@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import {
   Card,
   CardText,
@@ -82,53 +82,120 @@ function RenderCard({ mantis }) {
 //when click "nymphs" the data should show mantis nymphs (new state)
 
 //code-wise:
-//[DONE]filter the data by "nymph"
-//[TO DO] check the state of the dropdown that is selected
-//        ->turn below into class component
-//        ->NOTE: this is an uncontrolled form
-// https://stackoverflow.com/questions/29108779/how-to-get-selected-value-of-a-dropdown-menu-in-reactjs
+//[DONE] filter the data by "nymph"
+//[DONE] convert Mantises to a class component
+//[DONE] create handleChange event handler to change state
+//[TO DO] bind the state of dropdown to the correct filtered mantises
 
-function Mantises(props) {
-  const nymphs = props.mantises.filter((mantis) => mantis.age === "Nymph");
-  const adults = props.mantises.filter((mantis) => mantis.age === "Adult");
-  const featured = props.mantises.filter((mantis) => mantis.featured === true);
+class Mantises extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: "Featured",
+    };
 
-  const mantis = featured.map((mantis) => {
-    return (
-      <div key={mantis.id}>
-        <RenderCard mantis={mantis} />
-      </div>
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  render() {
+    const nymphs = this.props.mantises.filter(
+      (mantis) => mantis.age === "Nymph"
     );
-  });
+    const adults = this.props.mantises.filter(
+      (mantis) => mantis.age === "Adult"
+    );
+    const featured = this.props.mantises.filter(
+      (mantis) => mantis.featured === true
+    );
 
-  return (
-    <React.Fragment>
-      <Row className="mr-0 ml-0 the-top">
-        <Col className="mt-2 ml-0 pl-0 title-container">
-          <h1>Mantises</h1>
-        </Col>
-        <Col>
-          {" "}
-          {/*This will eventually be a react redux dropdown */}
-          <form class="container-fluid mt-2">
-            <div class="form-group row pr-1">
-              <select class="form-control">
-                <option value="select">Sort by Featured</option>
-                <option value="1">Sort by Nymphs</option>
-                <option value="2">Sort by Adults</option>
-              </select>
-            </div>
-          </form>
-        </Col>
-      </Row>
+    const mantis = featured.map((mantis) => {
+      return (
+        <div key={mantis.id}>
+          <RenderCard mantis={mantis} />
+        </div>
+      );
+    });
 
-      <Col>
-        <Row xs={2} sm={3} md={4} className="d-flex flex-fill h-100 the-row">
-          {mantis}
+    return (
+      <React.Fragment>
+        <Row className="mr-0 ml-0 the-top">
+          <Col className="mt-2 ml-0 pl-0 title-container">
+            <h1>Mantises</h1>
+          </Col>
+          <Col>
+            {/*This will eventually be a react redux dropdown */}
+            <form class="container-fluid mt-2" onSubmit={this.handleSubmit}>
+              <div class="form-group row pr-1">
+                <select
+                  class="form-control"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                >
+                  <option value="Featured">Sort by Featured</option>
+                  <option value="Nymphs">Sort by Nymphs</option>
+                  <option value="Adults">Sort by Adults</option>
+                </select>
+              </div>
+            </form>
+          </Col>
         </Row>
-      </Col>
-    </React.Fragment>
-  );
+
+        <Col>
+          <Row xs={2} sm={3} md={4} className="d-flex flex-fill h-100 the-row">
+            {mantis}
+          </Row>
+        </Col>
+      </React.Fragment>
+    );
+  }
 }
 
 export default Mantises;
+
+//written as a functional component----------------------------
+// function Mantises(props) {
+//   const nymphs = props.mantises.filter((mantis) => mantis.age === "Nymph");
+//   const adults = props.mantises.filter((mantis) => mantis.age === "Adult");
+//   const featured = props.mantises.filter((mantis) => mantis.featured === true);
+
+//   const mantis = featured.map((mantis) => {
+//     return (
+//       <div key={mantis.id}>
+//         <RenderCard mantis={mantis} />
+//       </div>
+//     );
+//   });
+
+//   return (
+//     <React.Fragment>
+//       <Row className="mr-0 ml-0 the-top">
+//         <Col className="mt-2 ml-0 pl-0 title-container">
+//           <h1>Mantises</h1>
+//         </Col>
+//         <Col>
+//           {" "}
+//           {/*This will eventually be a react redux dropdown */}
+//           <form class="container-fluid mt-2">
+//             <div class="form-group row pr-1">
+//               <select class="form-control">
+//                 <option value="select">Sort by Featured</option>
+//                 <option value="1">Sort by Nymphs</option>
+//                 <option value="2">Sort by Adults</option>
+//               </select>
+//             </div>
+//           </form>
+//         </Col>
+//       </Row>
+
+//       <Col>
+//         <Row xs={2} sm={3} md={4} className="d-flex flex-fill h-100 the-row">
+//           {mantis}
+//         </Row>
+//       </Col>
+//     </React.Fragment>
+//   );
+// }
