@@ -14,7 +14,6 @@ This project was created using [Create React App](https://github.com/facebook/cr
 ## To Do (shorter term)
 
 - Rewrite dropdown logic using hooks
-- How to have two event handlers for onClick event (toggle dropdown arrow + toggle open/close)
 
 ## Longer Term
 

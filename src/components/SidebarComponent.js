@@ -23,7 +23,10 @@ function RenderNav({ header }) {
     return (
       <Card className="rounded-0">
         <Button
-          onClick={toggleImage}
+          onClick={() => {
+            toggle();
+            toggleImage();
+          }}
           className="navbar-buttons btn-light rounded-0 p-2"
           aria-labelledby={header.name}
         >
@@ -68,5 +71,3 @@ function Sidebar(props) {
 }
 
 export default Sidebar;
-
-//will fix how the navlinks work (regex so that when there's a space in the name, it deletes the space?)
