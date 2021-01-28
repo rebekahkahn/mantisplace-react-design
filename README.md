@@ -2,12 +2,11 @@
 
 This project was created using [Create React App](https://github.com/facebook/create-react-app). Project is now being reworked for react and reactstrap.
 
-## Done (Jan 27, 2020)
+## Done (Jan 28, 2020)
 
-- Added "add to cart" button that opens a modal
-- Linked to cart page (logic not yet written to make this possible)
-- Deleted unnecessary images
-- Little formatting changes
+- Added react redux to hold state in the store
+- Created mantises and headers reducers
+- Combined reducers with CombineReducers
 
 ## To Fix
 

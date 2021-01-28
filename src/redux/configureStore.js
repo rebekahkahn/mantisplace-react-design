@@ -1,8 +1,14 @@
-import { createStore } from "redux";
-import { Reducer, initialState } from "./reducer";
+import { createStore, combineReducers } from "redux";
+import { Mantises } from "./mantises";
+import { Headers } from "./sidebarnav";
 
 export const ConfigureStore = () => {
-  const store = createStore(Reducer, initialState);
+  const store = createStore(
+    combineReducers({
+      mantises: Mantises,
+      headers: Headers,
+    })
+  );
 
   return store;
 };
