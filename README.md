@@ -2,10 +2,12 @@
 
 This project was created using [Create React App](https://github.com/facebook/create-react-app). Project is now being reworked for react and reactstrap.
 
-## Done (Jan 26, 2020)
+## Done (Jan 27, 2020)
 
-- Mantises component dropdown is tied to state
-- Used hooks to change dropdown arrow
+- Added "add to cart" button that opens a modal
+- Linked to cart page (logic not yet written to make this possible)
+- Deleted unnecessary images
+- Little formatting changes
 
 ## To Fix
 
@@ -13,12 +15,12 @@ This project was created using [Create React App](https://github.com/facebook/cr
 
 ## To Do (shorter term)
 
+- Write logic for shopping cart -- redux?
 - Rewrite dropdown logic using hooks
 
 ## Longer Term
 
-- Make code more concise, using hooks etc.
-- Write logic for shopping cart
+- Rewrite Mantis Component to be more concise
 - Add React Redux
 - Why is there a white space to the right?
 

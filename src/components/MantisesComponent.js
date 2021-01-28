@@ -75,6 +75,7 @@ function RenderCard({ mantis }) {
     </React.Fragment>
   );
 }
+
 class Mantises extends Component {
   constructor(props) {
     super(props);

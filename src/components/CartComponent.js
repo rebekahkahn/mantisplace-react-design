@@ -1,0 +1,22 @@
+import React from "react";
+import { Col, Row } from "reactstrap";
+
+function Cart() {
+  return (
+    <React.Fragment>
+      <Row className="mr-0 ml-0 the-top">
+        <Col className="mt-2 ml-0 pl-0 title-container">
+          <h1>Your Cart!</h1>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col sm={6} className="d-flex flex-fill h-100 title-container">
+          Will logic this out later.
+        </Col>
+      </Row>
+    </React.Fragment>
+  );
+}
+
+export default Cart;
