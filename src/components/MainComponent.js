@@ -12,19 +12,17 @@ import Accessories from "./AccessoriesComponent";
 import MantisInfo from "./MantisInfoComponent";
 import Cart from "./CartComponent";
 
-import { MANTISES } from "../shared/mantises";
-import { HEADERS } from "../shared/sidebarnav";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => {
+  return {
+    mantises: state.mantises,
+    headers: state.headers,
+  };
+};
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mantises: MANTISES,
-      headers: HEADERS,
-    };
-  }
-
   render() {
     const HomePage = () => {
       return <Home />;
@@ -46,7 +44,7 @@ class Main extends Component {
       return (
         <MantisInfo
           mantis={
-            this.state.mantises.filter(
+            this.props.mantises.filter(
               (mantis) => mantis.id === +match.params.mantisId
             )[0]
           }
@@ -60,7 +58,7 @@ class Main extends Component {
 
         <Row>
           <Col xs={4} className="d-none d-lg-block">
-            <Sidebar headers={this.state.headers} />
+            <Sidebar headers={this.props.headers} />
           </Col>
           <Col>
             <Switch>
@@ -68,7 +66,7 @@ class Main extends Component {
               <Route
                 exact
                 path="/mantises"
-                render={() => <Mantises mantises={this.state.mantises} />}
+                render={() => <Mantises mantises={this.props.mantises} />}
               />
 
               <Route path="/mantises/:mantisId" component={MantisWithId} />
@@ -89,4 +87,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default withRouter(connect(mapStateToProps)(Main));
