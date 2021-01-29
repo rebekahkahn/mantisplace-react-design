@@ -16,54 +16,24 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-function RenderMantis({ mantis }) {
+function MantisCart({ mantis, addMantis, mantisId }) {
   const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
+  const toggle = () => {
+    return setIsOpen(!isOpen) && addMantis(mantisId);
+  };
 
   return (
-    <React.Fragment>
-      <div>
-        <Row className="mt-3">
-          <Col xs={5} sm={4}>
-            <Card>
-              <CardImg top src={mantis.image} alt={mantis.name} />
-            </Card>
-          </Col>
-
-          <Col>
-            <h1>{mantis.name}</h1>
-            <Card>
-              <CardText>
-                <CardBody>{mantis.description}</CardBody>
-                <CardBody>
-                  <Button
-                    color="success"
-                    className="p-2 rounded-0 product-button float-right mb-3"
-                    aria-label="Add to Cart"
-                    onClick={toggle}
-                  >
-                    Add to Cart
-                  </Button>
-                </CardBody>
-              </CardText>
-            </Card>
-          </Col>
-        </Row>
-
-        <Row className="mt-3 title-container">
-          <h1>Recommended Accessories</h1>
-          <Card className="mb-4">
-            <CardBody>
-              <CardText>
-                Eventually this will be mapped over an accessories js data file.
-                Also, I am going to change the styling of this page. It's ugly
-                right now.
-              </CardText>
-            </CardBody>
-          </Card>
-        </Row>
-      </div>
-
+    <>
+      <Button
+        color="success"
+        className="p-2 rounded-0 product-button float-right mb-3"
+        aria-label="Add to Cart"
+        onClick={() => {
+          toggle();
+        }}
+      >
+        Add to Cart
+      </Button>
       <Modal centered isOpen={isOpen} toggle={toggle} aria-label="Cancel">
         <ModalHeader toggle={toggle} className="product-header pb-0">
           <h1>Added to cart!</h1>
@@ -100,6 +70,52 @@ function RenderMantis({ mantis }) {
           </Link>
         </ModalFooter>
       </Modal>
+    </>
+  );
+}
+
+//destructure addMantis and mantisId props, now passed to RenderMantis
+function RenderMantis({ mantis, addMantis, mantisId }) {
+  return (
+    <React.Fragment>
+      <div>
+        <Row className="mt-3">
+          <Col xs={5} sm={4}>
+            <Card>
+              <CardImg top src={mantis.image} alt={mantis.name} />
+            </Card>
+          </Col>
+
+          <Col>
+            <h1>{mantis.name}</h1>
+            <Card>
+              <CardText>
+                <CardBody>{mantis.description}</CardBody>
+                <CardBody>
+                  <MantisCart
+                    mantis={mantis}
+                    mantisId={mantisId}
+                    addMantis={addMantis}
+                  />
+                </CardBody>
+              </CardText>
+            </Card>
+          </Col>
+        </Row>
+
+        <Row className="mt-3 title-container">
+          <h1>Recommended Accessories</h1>
+          <Card className="mb-4">
+            <CardBody>
+              <CardText>
+                Eventually this will be mapped over an accessories js data file.
+                Also, I am going to change the styling of this page. It's ugly
+                right now.
+              </CardText>
+            </CardBody>
+          </Card>
+        </Row>
+      </div>
     </React.Fragment>
   );
 }
@@ -116,7 +132,12 @@ function MantisInfo(props) {
         </Breadcrumb>
 
         <Col>
-          <RenderMantis mantis={props.mantis} />
+          <RenderMantis
+            mantis={props.mantis}
+            addMantis={props.addMantis}
+            mantisId={props.mantisId}
+          />
+          {/*pass addMantis and mantisId props to the RenderMantis component  */}
         </Col>
       </div>
     );
