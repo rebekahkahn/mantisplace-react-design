@@ -6,3 +6,11 @@ export const addMantis = (mantisId) => ({
     mantisId: mantisId,
   },
 });
+
+//practice action creator
+export const addReminder = (text) => ({
+  type: ActionTypes.ADD_REMINDER,
+  payload: {
+    text: text,
+  },
+});

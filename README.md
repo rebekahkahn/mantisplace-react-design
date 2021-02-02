@@ -2,15 +2,9 @@
 
 This project was created using [Create React App](https://github.com/facebook/create-react-app). Project is now being reworked for react and reactstrap.
 
-## Done (Jan 29, 2020)
+## Done (Feb 1, 2020)
 
-- Added action type: addMantis
-- Added action creator: addMantis, with a payload of mantisId
-- Added case to mantises reducer: state=MANTISES, action is add it to the payload based on the id
-- Modified MainComponent to make action creator f'n available inside the Main component as a prop
-- MantisInfo: Separated modal from the render mantis function
-- MantisInfo: passed mantisId and addMantis props to MantisCart
-- MantisInfo: attempted to fire this action upon onClick... (not working)
+- Practice with adding actions and reducers
 
 ## To Fix
 
