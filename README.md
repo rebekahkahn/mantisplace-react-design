@@ -2,7 +2,7 @@
 
 This project was created using [Create React App](https://github.com/facebook/create-react-app). Project is now being reworked for react and reactstrap.
 
-## Done (Feb 1, 2020)
+## Done (Feb 2, 2020)
 
 - Practice with adding actions and reducers
 

@@ -7,10 +7,17 @@ export const addMantis = (mantisId) => ({
   },
 });
 
-//practice action creator
+//practice action creators-----------------
 export const addReminder = (text) => ({
   type: ActionTypes.ADD_REMINDER,
   payload: {
     text: text,
+  },
+});
+
+export const deleteReminder = (reminder) => ({
+  type: ActionTypes.DELETE_REMINDER,
+  payload: {
+    reminder: reminder,
   },
 });
