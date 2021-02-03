@@ -5,6 +5,7 @@ This project was created using [Create React App](https://github.com/facebook/cr
 ## Done (Feb 2, 2020)
 
 - Practice with adding actions and reducers
+- Added a cart reducer, have yet to change the components - will do tomorrow
 
 ## To Fix
 

@@ -16,10 +16,10 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-function MantisCart({ mantis, addMantis, mantisId }) {
+function MantisCart({ mantis, addItem, mantisId }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
-    return setIsOpen(!isOpen) && addMantis(mantisId);
+    return setIsOpen(!isOpen) && addItem(mantisId);
   };
 
   return (
@@ -74,8 +74,8 @@ function MantisCart({ mantis, addMantis, mantisId }) {
   );
 }
 
-//destructure addMantis and mantisId props, now passed to RenderMantis
-function RenderMantis({ mantis, addMantis, mantisId }) {
+//destructure addItem and mantisId props, now passed to RenderMantis
+function RenderMantis({ mantis, addItem, mantisId }) {
   return (
     <React.Fragment>
       <div>
@@ -95,7 +95,7 @@ function RenderMantis({ mantis, addMantis, mantisId }) {
                   <MantisCart
                     mantis={mantis}
                     mantisId={mantisId}
-                    addMantis={addMantis}
+                    addItem={addItem}
                   />
                 </CardBody>
               </CardText>
@@ -134,10 +134,10 @@ function MantisInfo(props) {
         <Col>
           <RenderMantis
             mantis={props.mantis}
-            addMantis={props.addMantis}
+            addItem={props.addItem}
             mantisId={props.mantisId}
           />
-          {/*pass addMantis and mantisId props to the RenderMantis component  */}
+          {/*pass addItem and mantisId props to the RenderMantis component  */}
         </Col>
       </div>
     );

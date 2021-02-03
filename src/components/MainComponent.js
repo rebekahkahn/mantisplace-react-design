@@ -12,7 +12,7 @@ import Accessories from "./AccessoriesComponent";
 import MantisInfo from "./MantisInfoComponent";
 import Cart from "./CartComponent";
 
-import { addMantis } from "../redux/ActionCreators"; //import the action
+import { addItem } from "../redux/ActionCreators"; //import the action
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -25,7 +25,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   //helps component fire an event
-  addMantis: (mantisId) => addMantis(mantisId),
+  addItem: (mantisId) => addItem(mantisId),
 };
 
 class Main extends Component {
@@ -54,7 +54,7 @@ class Main extends Component {
               (mantis) => mantis.id === +match.params.mantisId
             )[0]
           }
-          addMantis={this.props.addMantis} //pass action as a prop to mantisinfo component
+          addItem={this.props.addItem} //pass action as a prop to mantisinfo component
         />
       );
     };
@@ -94,5 +94,5 @@ class Main extends Component {
   }
 }
 
-//mapDispathToProps makes addMantis action creator function available inside the Main Component as a prop
+//mapDispathToProps makes addItem action creator function available inside the Main Component as a prop
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
