@@ -2,14 +2,12 @@
 
 This project was created using [Create React App](https://github.com/facebook/create-react-app). Project is now being reworked for react and reactstrap.
 
-## Done (Feb 2, 2020)
+## Done (Feb 4, 2020)
 
-- Practice with adding actions and reducers
-- Added a cart reducer, have yet to change the components - will do tomorrow
+- Logicing react-redux currently!
 
 ## To Fix
 
-- Check if action worked?
 - Code for siebar nav links (making most default to home for now) [easy to do]
 
 ## To Do (shorter term)

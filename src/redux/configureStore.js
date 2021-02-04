@@ -1,5 +1,4 @@
 import { createStore, combineReducers } from "redux";
-import { Items } from "./cart";
 import { Mantises } from "./mantises";
 import { Headers } from "./sidebarnav";
 
@@ -8,7 +7,6 @@ export const ConfigureStore = () => {
     combineReducers({
       mantises: Mantises,
       headers: Headers,
-      items: Items,
     })
   );
 

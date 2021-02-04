@@ -12,7 +12,7 @@ import Accessories from "./AccessoriesComponent";
 import MantisInfo from "./MantisInfoComponent";
 import Cart from "./CartComponent";
 
-import { addItem } from "../redux/ActionCreators"; //import the action
+import { addItem, deleteItem } from "../redux/ActionCreators"; //import the actions
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -26,6 +26,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   //helps component fire an event
   addItem: (mantisId) => addItem(mantisId),
+  deleteItem: (mantisId) => deleteItem(mantisId),
 };
 
 class Main extends Component {
@@ -55,6 +56,7 @@ class Main extends Component {
             )[0]
           }
           addItem={this.props.addItem} //pass action as a prop to mantisinfo component
+          deleteItem={this.props.deleteItem} //pass action as a propr to mantisinfo component
         />
       );
     };

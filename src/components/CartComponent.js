@@ -1,5 +1,7 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
+import { addItem, deleteItem } from "../redux/ActionCreators"; //import the actions
+import { connect } from "react-redux"; //import from react redux
 
 function Cart() {
   return (
@@ -20,3 +22,5 @@ function Cart() {
 }
 
 export default Cart;
+
+//need a component that will display the cart items we have added to the redux store

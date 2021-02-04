@@ -74,8 +74,8 @@ function MantisCart({ mantis, addItem, mantisId }) {
   );
 }
 
-//destructure addItem and mantisId props, now passed to RenderMantis
-function RenderMantis({ mantis, addItem, mantisId }) {
+// 2) destructure addItem+deleteItem and mantisId props, now passed to RenderMantis
+function RenderMantis({ mantis, addItem, deleteItem, mantisId }) {
   return (
     <React.Fragment>
       <div>
@@ -96,6 +96,7 @@ function RenderMantis({ mantis, addItem, mantisId }) {
                     mantis={mantis}
                     mantisId={mantisId}
                     addItem={addItem}
+                    deleteItem={deleteItem}
                   />
                 </CardBody>
               </CardText>
@@ -134,10 +135,11 @@ function MantisInfo(props) {
         <Col>
           <RenderMantis
             mantis={props.mantis}
-            addItem={props.addItem}
             mantisId={props.mantisId}
+            addItem={props.addItem}
+            deleteItem={props.deleteItem}
           />
-          {/*pass addItem and mantisId props to the RenderMantis component  */}
+          {/* 1) pass addItem+deleteitem and mantisId props to the RenderMantis component  */}
         </Col>
       </div>
     );
