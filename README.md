@@ -2,9 +2,12 @@
 
 This project was created using [Create React App](https://github.com/facebook/create-react-app). Project is now being reworked for react and reactstrap.
 
-## Done (Feb 4, 2020)
+## Done (Feb 5, 2020)
 
-- Logicing react-redux currently!
+- Added "add product" button to all mantises shown
+
+- Logicing react-redux
+- Current goal: "add product" button adds the item to the cart, which is shown on that same page below the other results
 
 ## To Fix
 

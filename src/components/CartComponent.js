@@ -3,7 +3,7 @@ import { Col, Row } from "reactstrap";
 import { addItem, deleteItem } from "../redux/ActionCreators"; //import the actions
 import { connect } from "react-redux"; //import from react redux
 
-function Cart() {
+function Cart(props) {
   return (
     <React.Fragment>
       <Row className="mr-0 ml-0 the-top">
@@ -14,7 +14,7 @@ function Cart() {
 
       <Row>
         <Col sm={6} className="d-flex flex-fill h-100 title-container">
-          Will logic this out later.
+          {props.mantisId}
         </Col>
       </Row>
     </React.Fragment>

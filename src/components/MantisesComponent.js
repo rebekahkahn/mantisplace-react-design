@@ -11,6 +11,8 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  Popover,
+  PopoverHeader,
   Button,
 } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -18,6 +20,9 @@ import { Link } from "react-router-dom";
 function RenderCard({ mantis }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+
+  const [popoverOpen, setPopoverOpen] = useState(false);
+  const togglePop = () => setPopoverOpen(!popoverOpen);
 
   return (
     <React.Fragment>
@@ -29,10 +34,34 @@ function RenderCard({ mantis }) {
           onClick={toggle}
         />
         <CardBody>
-          <Link to={`mantises/${mantis.id}`}>
-            <CardSubtitle className="mantis-name">{mantis.name}</CardSubtitle>
-          </Link>
-          <CardText className="mantis-price">${mantis.price}</CardText>
+          <Row>
+            <Col xs={7} sm={8}>
+              <Link to={`mantises/${mantis.id}`}>
+                <CardSubtitle className="mantis-name">
+                  {mantis.name}
+                </CardSubtitle>
+              </Link>
+              <CardText className="mantis-price">${mantis.price}</CardText>
+            </Col>
+            <Col>
+              <Button
+                id="popover1"
+                color="success"
+                className="p-2 add-button float-right mb-0 pb-0"
+                aria-label="Add to Cart"
+              >
+                +
+              </Button>
+              <Popover
+                placement="bottom"
+                isOpen={popoverOpen}
+                target="popover1"
+                toggle={togglePop}
+              >
+                <PopoverHeader>Add to Cart</PopoverHeader>
+              </Popover>
+            </Col>
+          </Row>
         </CardBody>
       </Card>
 

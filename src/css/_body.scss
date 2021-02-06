@@ -1,42 +1,50 @@
 @import "variables";
 
 .mantis-image {
-    padding: 10px 19px 0px 19px;
+  padding: 10px 19px 0px 19px;
 }
 
 .mantis-name {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .mantis-price {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 //media query so that Mantises is slightly to right on smaller screens
-@media only screen and (max-width: 992px){
-.title-container {
-        position: relative;
-        top: 0px;
-        left:5px;
-    }
+@media only screen and (max-width: 992px) {
+  .title-container {
+    position: relative;
+    top: 0px;
+    left: 5px;
+  }
 }
 
 //product modal styles--------------------------------------------------
-.product-header{
-    background-color: $bright-green;
+.product-header {
+  background-color: $bright-green;
 }
 
 .product-name {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .product-description {
-    font-size: .9em;
+  font-size: 0.9em;
 }
 
-.product-button{
-    font-family: "Raleway", sans-serif;
-    background: $bright-green;
-    border: none;
-    box-shadow: none !important;
+.product-button {
+  font-family: "Raleway", sans-serif;
+  background: $bright-green;
+  border: none;
+  box-shadow: none !important;
+}
+
+.add-button {
+  font-family: "Raleway", sans-serif;
+  background: $bright-green;
+  border: none;
+  box-shadow: none !important;
+  position: relative;
 }
