@@ -9,6 +9,24 @@ This project was created using [Create React App](https://github.com/facebook/cr
 - Logicing react-redux
 - Current goal: "add product" button adds the item to the cart, which is shown on that same page below the other results
 
+## Screenshots
+
+- Homepage
+
+![homepage](https://github.com/rebekahkahn/mantisplace-react-design/blob/master/public/screenshots/homepage.png)
+
+- Featured Items
+
+![featureditems](https://github.com/rebekahkahn/mantisplace-react-design/blob/master/public/screenshots/featureditems.png)
+
+- Product preview
+
+![productpreview](https://github.com/rebekahkahn/mantisplace-react-design/blob/master/public/screenshots/productmodal.png)
+
+- Product page
+
+![productpage](https://github.com/rebekahkahn/mantisplace-react-design/blob/master/public/screenshots/productpage.png)
+
 ## To Fix
 
 - Code for siebar nav links (making most default to home for now) [easy to do]
