@@ -14,12 +14,13 @@ import {
   ModalBody,
   ModalFooter,
 } from "reactstrap";
+import { Loading } from "./LoadingComponent";
 import { Link } from "react-router-dom";
 
-function MantisCart({ mantis, addItem, mantisId }) {
+function MantisCart({ mantis }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
-    return setIsOpen(!isOpen) && addItem(mantisId);
+    return setIsOpen(!isOpen);
   };
 
   return (
@@ -74,8 +75,7 @@ function MantisCart({ mantis, addItem, mantisId }) {
   );
 }
 
-// 2) destructure addItem+deleteItem and mantisId props, now passed to RenderMantis
-function RenderMantis({ mantis, addItem, deleteItem, mantisId }) {
+function RenderMantis({ mantis, mantisId }) {
   return (
     <React.Fragment>
       <div>
@@ -92,12 +92,7 @@ function RenderMantis({ mantis, addItem, deleteItem, mantisId }) {
               <CardText>
                 <CardBody>{mantis.description}</CardBody>
                 <CardBody>
-                  <MantisCart
-                    mantis={mantis}
-                    mantisId={mantisId}
-                    addItem={addItem}
-                    deleteItem={deleteItem}
-                  />
+                  <MantisCart mantis={mantis} mantisId={mantisId} />
                 </CardBody>
               </CardText>
             </Card>
@@ -122,6 +117,32 @@ function RenderMantis({ mantis, addItem, deleteItem, mantisId }) {
 }
 
 function MantisInfo(props) {
+  if (props.isLoading) {
+    return (
+      <Row className="mt-3 title-container">
+        <Card className="mb-4">
+          <CardBody>
+            <CardText>
+              <Loading />
+            </CardText>
+          </CardBody>
+        </Card>
+      </Row>
+    );
+  }
+
+  if (props.errMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <h4>{props.errMess}</h4>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (props.mantis) {
     return (
       <div className="mr-3">
@@ -133,13 +154,7 @@ function MantisInfo(props) {
         </Breadcrumb>
 
         <Col>
-          <RenderMantis
-            mantis={props.mantis}
-            mantisId={props.mantisId}
-            addItem={props.addItem}
-            deleteItem={props.deleteItem}
-          />
-          {/* 1) pass addItem+deleteitem and mantisId props to the RenderMantis component  */}
+          <RenderMantis mantis={props.mantis} mantisId={props.mantisId} />
         </Col>
       </div>
     );

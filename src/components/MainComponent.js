@@ -12,7 +12,7 @@ import Accessories from "./AccessoriesComponent";
 import MantisInfo from "./MantisInfoComponent";
 import Cart from "./CartComponent";
 
-import { addItem, deleteItem } from "../redux/ActionCreators"; //import the actions
+import { fetchMantises } from "../redux/ActionCreators"; //import the actions
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -24,16 +24,42 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  //helps component fire an event
-  addItem: (mantisId) => addItem(mantisId),
-  deleteItem: (mantisId) => deleteItem(mantisId),
+  fetchMantises: () => fetchMantises(),
 };
 
 class Main extends Component {
+  componentDidMount() {
+    this.props.fetchMantises();
+  }
   render() {
     const HomePage = () => {
       return <Home />;
     };
+
+    const MantisesPage = () => {
+      return (
+        <Mantises
+          mantis={this.props.mantises.mantises}
+          mantisesLoading={this.props.mantises.isLoading}
+          mantisesErrMess={this.props.mantises.errMess}
+        />
+      );
+    };
+
+    const MantisWithId = ({ match }) => {
+      return (
+        <MantisInfo
+          mantis={
+            this.props.mantises.mantises.filter(
+              (mantis) => mantis.id === +match.params.mantisId
+            )[0]
+          }
+          isLoading={this.props.mantises.isLoading}
+          errMess={this.props.mantises.errMess}
+        />
+      );
+    };
+
     const VideosPage = () => {
       return <Videos />;
     };
@@ -47,20 +73,6 @@ class Main extends Component {
       return <Cart />;
     };
 
-    const MantisWithId = ({ match }) => {
-      return (
-        <MantisInfo
-          mantis={
-            this.props.mantises.filter(
-              (mantis) => mantis.id === +match.params.mantisId
-            )[0]
-          }
-          addItem={this.props.addItem} //pass action as a prop to mantisinfo component
-          deleteItem={this.props.deleteItem} //pass action as a propr to mantisinfo component
-        />
-      );
-    };
-
     return (
       <React.Fragment>
         <Header />
@@ -72,11 +84,7 @@ class Main extends Component {
           <Col>
             <Switch>
               <Route path="/home" component={HomePage} />
-              <Route
-                exact
-                path="/mantises"
-                render={() => <Mantises mantises={this.props.mantises} />}
-              />
+              <Route exact path="/mantises" component={MantisesPage} />
 
               <Route path="/mantises/:mantisId" component={MantisWithId} />
 

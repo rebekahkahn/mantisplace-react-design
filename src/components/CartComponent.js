@@ -1,7 +1,5 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
-import { addItem, deleteItem } from "../redux/ActionCreators"; //import the actions
-import { connect } from "react-redux"; //import from react redux
 
 function Cart(props) {
   return (

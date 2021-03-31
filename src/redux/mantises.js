@@ -1,30 +1,26 @@
-import { MANTISES } from "../shared/mantises";
 import * as ActionTypes from "./ActionTypes";
 
-const initialState = {
-  MANTISES,
-  items: [],
-};
-
-export const Mantises = (state = initialState, action) => {
+export const Mantises = (
+  state = {
+    isLoading: true,
+    errMess: null,
+    mantises: [],
+  },
+  action
+) => {
   switch (action.type) {
-    //must edit the additem and deleteitem cases
-    case ActionTypes.ADD_ITEM:
+    case ActionTypes.ADD_MANTISES:
       return {
         ...state,
-        items: [...state.items, action.payload],
+        isLoading: false,
+        errMess: null,
+        mantises: action.payload,
       };
-    case ActionTypes.DELETE_ITEM:
-      return {
-        ...state,
-        items: [...state.items.filter((item) => item !== action.payload)],
-      };
+    case ActionTypes.MANTISES_LOADING:
+      return { ...state, isLoading: true, errMess: null, mantises: [] };
+    case ActionTypes.MANTISES_FAILED:
+      return { ...state, isLoading: false, errMess: action.payload };
     default:
-      return state.MANTISES;
+      return state;
   }
 };
-
-//want to return the mantises array at all times
-//want to add mantis to items array at the end of action
-
-//NOTE: I will get the delete mantis action working AFTER getting the add mantis action working...

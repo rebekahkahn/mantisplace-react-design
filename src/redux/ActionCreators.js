@@ -1,18 +1,24 @@
 import * as ActionTypes from "./ActionTypes";
+import { MANTISES } from "../shared/mantises";
 
-export const addItem = (mantisId) => ({
-  type: ActionTypes.ADD_ITEM,
-  payload: {
-    mantisId: mantisId,
-  },
+export const fetchMantises = () => (dispatch) => {
+  dispatch(mantisesLoading());
+
+  setTimeout(() => {
+    dispatch(addMantises(MANTISES));
+  }, 2000);
+};
+
+export const mantisesLoading = () => ({
+  type: ActionTypes.MANTISES_LOADING,
 });
 
-export const deleteItem = (mantisId) => ({
-  type: ActionTypes.DELETE_ITEM,
-  payload: {
-    mantisId: mantisId,
-  },
+export const mantisesFailed = (errMess) => ({
+  type: ActionTypes.MANTISES_FAILED,
+  payload: errMess,
 });
 
-//note: mantisId is supplied in the +match.params of the react router
-//to go to the specific mantis that is clicked
+export const addMantises = (mantises) => ({
+  type: ActionTypes.ADD_MANTISES,
+  payload: mantises,
+});

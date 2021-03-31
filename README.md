@@ -15,7 +15,7 @@ This project was created using [Create React App](https://github.com/facebook/cr
 
 ![homepage](https://github.com/rebekahkahn/mantisplace-react-design/blob/master/public/screenshots/homepage.png)
 
-- Featured Items
+- Featured Items (select a different dropdown option for filtered results)
 
 ![featureditems](https://github.com/rebekahkahn/mantisplace-react-design/blob/master/public/screenshots/featureditems.png)
 

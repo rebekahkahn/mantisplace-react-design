@@ -15,14 +15,22 @@ import {
   PopoverHeader,
   Button,
 } from "reactstrap";
+import { Loading } from "./LoadingComponent";
 import { Link } from "react-router-dom";
 
-function RenderCard({ mantis }) {
+function RenderCard({ mantis, isLoading, errMess }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   const [popoverOpen, setPopoverOpen] = useState(false);
   const togglePop = () => setPopoverOpen(!popoverOpen);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (errMess) {
+    return <h4>{errMess}</h4>;
+  }
 
   return (
     <React.Fragment>
@@ -120,20 +128,20 @@ class Mantises extends Component {
   }
 
   render() {
-    const nymphs = this.props.mantises.filter(
-      (mantis) => mantis.age === "Nymph"
-    );
-    const adults = this.props.mantises.filter(
-      (mantis) => mantis.age === "Adult"
-    );
-    const featured = this.props.mantises.filter(
+    const nymphs = this.props.mantis.filter((mantis) => mantis.age === "Nymph");
+    const adults = this.props.mantis.filter((mantis) => mantis.age === "Adult");
+    const featured = this.props.mantis.filter(
       (mantis) => mantis.featured === true
     );
 
     let mantis = featured.map((mantis) => {
       return (
         <div key={mantis.id}>
-          <RenderCard mantis={mantis} />
+          <RenderCard
+            mantis={mantis}
+            isLoading={mantis.mantisesLoading}
+            errMess={mantis.mantisesErrMess}
+          />
         </div>
       );
     });
@@ -142,7 +150,11 @@ class Mantises extends Component {
       let mantis = nymphs.map((mantis) => {
         return (
           <div key={mantis.id}>
-            <RenderCard mantis={mantis} />
+            <RenderCard
+              mantis={mantis}
+              isLoading={mantis.mantisesLoading}
+              errMess={mantis.mantisesErrMess}
+            />
           </div>
         );
       });
@@ -187,7 +199,11 @@ class Mantises extends Component {
       let mantis = adults.map((mantis) => {
         return (
           <div key={mantis.id}>
-            <RenderCard mantis={mantis} />
+            <RenderCard
+              mantis={mantis}
+              isLoading={mantis.mantisesLoading}
+              errMess={mantis.mantisesErrMess}
+            />
           </div>
         );
       });
