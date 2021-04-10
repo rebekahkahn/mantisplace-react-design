@@ -25,13 +25,6 @@ function RenderCard({ mantis, isLoading, errMess }) {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const togglePop = () => setPopoverOpen(!popoverOpen);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-  if (errMess) {
-    return <h4>{errMess}</h4>;
-  }
-
   return (
     <React.Fragment>
       <Card className="h-100 rounded-0">
@@ -135,13 +128,16 @@ class Mantises extends Component {
     );
 
     let mantis = featured.map((mantis) => {
+      if (this.props.isLoading) {
+        console.log("Loading");
+        return <Loading />;
+      }
+      if (this.props.errMess) {
+        return <h4>{this.props.errMess}</h4>;
+      }
       return (
         <div key={mantis.id}>
-          <RenderCard
-            mantis={mantis}
-            isLoading={mantis.mantisesLoading}
-            errMess={mantis.mantisesErrMess}
-          />
+          <RenderCard mantis={mantis} />
         </div>
       );
     });
@@ -150,11 +146,7 @@ class Mantises extends Component {
       let mantis = nymphs.map((mantis) => {
         return (
           <div key={mantis.id}>
-            <RenderCard
-              mantis={mantis}
-              isLoading={mantis.mantisesLoading}
-              errMess={mantis.mantisesErrMess}
-            />
+            <RenderCard mantis={mantis} />
           </div>
         );
       });
@@ -199,11 +191,7 @@ class Mantises extends Component {
       let mantis = adults.map((mantis) => {
         return (
           <div key={mantis.id}>
-            <RenderCard
-              mantis={mantis}
-              isLoading={mantis.mantisesLoading}
-              errMess={mantis.mantisesErrMess}
-            />
+            <RenderCard mantis={mantis} />
           </div>
         );
       });

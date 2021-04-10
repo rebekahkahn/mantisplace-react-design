@@ -119,7 +119,7 @@ function RenderMantis({ mantis, mantisId }) {
 function MantisInfo(props) {
   if (props.isLoading) {
     return (
-      <Row className="mt-3 title-container">
+      <Row className="mt-3 title-container ml-3">
         <Card className="mb-4">
           <CardBody>
             <CardText>

@@ -40,8 +40,8 @@ class Main extends Component {
       return (
         <Mantises
           mantis={this.props.mantises.mantises}
-          mantisesLoading={this.props.mantises.isLoading}
-          mantisesErrMess={this.props.mantises.errMess}
+          isLoading={this.props.mantises.isLoading}
+          errMess={this.props.mantises.errMess}
         />
       );
     };

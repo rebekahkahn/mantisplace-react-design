@@ -2,12 +2,11 @@
 
 This project was created using [Create React App](https://github.com/facebook/create-react-app). Project is now being reworked for react and reactstrap.
 
-## Done (Feb 5, 2020)
+Here is a ![live preview](https://condescending-borg-73067e.netlify.app/home) of the website.
 
-- Added "add product" button to all mantises shown
+## Done (March 31, 2020)
 
-- Logicing react-redux
-- Current goal: "add product" button adds the item to the cart, which is shown on that same page below the other results
+- Adding actions and types (for fetching Mantises)
 
 ## Screenshots
 
