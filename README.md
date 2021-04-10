@@ -2,7 +2,7 @@
 
 This project was created using [Create React App](https://github.com/facebook/create-react-app). Project is now being reworked for react and reactstrap.
 
-Here is a ![live preview](https://condescending-borg-73067e.netlify.app/home) of the website.
+Here is a [live preview](https://condescending-borg-73067e.netlify.app/home) of the website.
 
 ## Done (March 31, 2020)
 
