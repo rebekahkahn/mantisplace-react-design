@@ -1,12 +1,12 @@
 # Mantis Place redesign
 
-This project was created using [Create React App](https://github.com/facebook/create-react-app). Project is now being reworked for react and reactstrap.
+This project was created using [Create React App](https://github.com/facebook/create-react-app). Project is also being reworked for react-native.
 
 Here is a [live preview](https://condescending-borg-73067e.netlify.app/) of the website.
 
-## Done (March 31, 2020)
+## Done (June 8, 2020)
 
-- Adding actions and types (for fetching Mantises)
+- Added redux action for Accessories, will update tomorrow so Accessories are mapped over for each mantis
 
 ## Screenshots
 
@@ -29,10 +29,12 @@ Here is a [live preview](https://condescending-borg-73067e.netlify.app/) of the 
 ## To Fix
 
 - Code for siebar nav links (making most default to home for now) [easy to do]
+- White space to the right
+- I know that the "blinking" header is due to needing to write a breakpoint, which I will do later
 
 ## To Do (shorter term)
 
-- Rewrite dropdown logic using hooks
+- Add shopping cart eature
 
 ## Longer Term
 

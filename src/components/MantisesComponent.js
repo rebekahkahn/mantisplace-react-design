@@ -11,8 +11,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Popover,
-  PopoverHeader,
   Button,
 } from "reactstrap";
 import { Loading } from "./LoadingComponent";
@@ -21,9 +19,6 @@ import { Link } from "react-router-dom";
 function RenderCard({ mantis, isLoading, errMess }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-
-  const [popoverOpen, setPopoverOpen] = useState(false);
-  const togglePop = () => setPopoverOpen(!popoverOpen);
 
   return (
     <React.Fragment>
@@ -46,21 +41,12 @@ function RenderCard({ mantis, isLoading, errMess }) {
             </Col>
             <Col>
               <Button
-                id="popover1"
                 color="success"
                 className="p-2 add-button float-right mb-0 pb-0"
                 aria-label="Add to Cart"
               >
                 +
               </Button>
-              <Popover
-                placement="bottom"
-                isOpen={popoverOpen}
-                target="popover1"
-                toggle={togglePop}
-              >
-                <PopoverHeader>Add to Cart</PopoverHeader>
-              </Popover>
             </Col>
           </Row>
         </CardBody>
@@ -129,7 +115,6 @@ class Mantises extends Component {
 
     let mantis = featured.map((mantis) => {
       if (this.props.isLoading) {
-        console.log("Loading");
         return <Loading />;
       }
       if (this.props.errMess) {
