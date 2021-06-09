@@ -4,9 +4,9 @@ This project was created using [Create React App](https://github.com/facebook/cr
 
 Here is a [live preview](https://condescending-borg-73067e.netlify.app/) of the website.
 
-## Done (June 8, 2020)
+## Done (June 9, 2020)
 
-- Added redux action for Accessories, will update tomorrow so Accessories are mapped over for each mantis
+- working on mapping...
 
 ## Screenshots
 

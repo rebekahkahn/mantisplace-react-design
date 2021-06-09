@@ -12,7 +12,7 @@ import Accessories from "./AccessoriesComponent";
 import MantisInfo from "./MantisInfoComponent";
 import Cart from "./CartComponent";
 
-import { fetchMantises } from "../redux/ActionCreators"; //import the actions
+import { fetchAccessories, fetchMantises } from "../redux/ActionCreators"; //import the actions
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -20,16 +20,19 @@ const mapStateToProps = (state) => {
   return {
     mantises: state.mantises,
     headers: state.headers,
+    accessories: state.accessories,
   };
 };
 
 const mapDispatchToProps = {
   fetchMantises: () => fetchMantises(),
+  fetchAccessories: () => fetchAccessories(),
 };
 
 class Main extends Component {
   componentDidMount() {
     this.props.fetchMantises();
+    this.props.fetchAccessories();
   }
   render() {
     const HomePage = () => {
@@ -56,6 +59,7 @@ class Main extends Component {
           }
           isLoading={this.props.mantises.isLoading}
           errMess={this.props.mantises.errMess}
+          accessories={this.props.accessories}
         />
       );
     };

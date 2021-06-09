@@ -17,6 +17,23 @@ import {
 import { Loading } from "./LoadingComponent";
 import { Link } from "react-router-dom";
 
+function RenderAccessories({ accessory }) {
+  return (
+    <Row className="mt-3 title-container">
+      <h1>Recommended Accessories</h1>
+      <Card className="mb-4">
+        <CardBody>
+          <CardText>
+            Eventually this will be mapped over an accessories js data file.
+            Also, I am going to change the styling of this page. It's ugly right
+            now.
+          </CardText>
+        </CardBody>
+      </Card>
+    </Row>
+  );
+}
+
 function MantisCart({ mantis }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
@@ -75,7 +92,14 @@ function MantisCart({ mantis }) {
   );
 }
 
-function RenderMantis({ mantis, mantisId }) {
+function RenderMantis({ mantis, mantisId, accessories }) {
+  let accessory = accessories.map((accessory) => {
+    return (
+      <div key={accessory.id}>
+        <RenderAccessories accessory={accessory} />
+      </div>
+    );
+  });
   return (
     <React.Fragment>
       <div>
@@ -98,18 +122,8 @@ function RenderMantis({ mantis, mantisId }) {
             </Card>
           </Col>
         </Row>
-
-        <Row className="mt-3 title-container">
-          <h1>Recommended Accessories</h1>
-          <Card className="mb-4">
-            <CardBody>
-              <CardText>
-                Eventually this will be mapped over an accessories js data file.
-                Also, I am going to change the styling of this page. It's ugly
-                right now.
-              </CardText>
-            </CardBody>
-          </Card>
+        <Row xs={2} sm={3} md={4} className="d-flex flex-fill h-100 the-row">
+          {accessory}
         </Row>
       </div>
     </React.Fragment>
